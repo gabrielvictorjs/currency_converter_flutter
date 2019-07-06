@@ -31,6 +31,12 @@ class _HomeScreenState extends State<HomeScreen> {
     _euroController.text = "";
   }
 
+  /* 
+   * In the code below, the currency values is calculated based on the "Real" entry.
+   * Example: if we enter with 1 Real, the dollar controller will be set to 1 divided 
+   * by the buying value of the dollar. The same is true for the euro.
+   */
+
   void _realChanged(String text) {
     if(text.isEmpty) {
       _clearAll();
@@ -90,6 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
             case ConnectionState.none:
             case ConnectionState.waiting:
 
+              // build the loading warning
               return Center(
                 child: buildCustomTextWarning("Carregando Dados")
               );
@@ -99,24 +106,30 @@ class _HomeScreenState extends State<HomeScreen> {
             default:
               if(snap.hasError) {
 
+                // build the error warning
                 return Center(
                   child: buildCustomTextWarning("Erro ao carregar os dados")
                 );
 
               } else {
+                // setting the currency values
                 _dollar = snap.data["results"]["currencies"]["USD"]["sell"];
                 _euro = snap.data["results"]["currencies"]["EUR"]["sell"];
 
+                // build the form
                 return SingleChildScrollView(
                   padding: EdgeInsets.all(10.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
                       Icon(Icons.monetization_on, size: 150.0, color: Colors.amber),
+                      // real input
                       buildTextField("Reais", "R\$", _realController, _realChanged),
                       Divider(),
+                      // dollar input
                       buildTextField("Dollar", "US\$", _dollarController, _dollarChanged),
                       Divider(),
+                      // euro input
                       buildTextField("Euro", "€", _euroController, _euroChanged)
                     ],
                   )

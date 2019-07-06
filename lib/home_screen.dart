@@ -126,13 +126,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: <Widget>[
                       Icon(Icons.monetization_on, size: 150.0, color: Colors.amber),
                       // real input
-                      buildTextField("Reais", "R\$", _realController, _realChanged),
+                      buildTextField("Reais", "R\$ ", _realController, _realChanged),
                       Divider(),
                       // dollar input
-                      buildTextField("Dollar", "US\$", _dollarController, _dollarChanged),
+                      buildTextField("Dollar", "US\$ ", _dollarController, _dollarChanged),
                       Divider(),
                       // euro input
-                      buildTextField("Euro", "€", _euroController, _euroChanged)
+                      buildTextField("Euro", "€ ", _euroController, _euroChanged)
                     ],
                   )
                 );

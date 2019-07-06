@@ -9,9 +9,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      // disable debug banner
+      debugShowCheckedModeBanner: false,
+      // Theming app
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Colors.white,
+        hintColor: Colors.amber
       ),
+      // define home screen
       home: HomeScreen(),
     );
   }
